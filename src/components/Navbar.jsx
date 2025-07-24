@@ -32,14 +32,18 @@ export default function AppNavbar({ onLoginClick, onSignupClick }) {
 
                 {/* Right: Auth controls */}
                 <Nav className="ms-auto">
-                    {isLanding && (
+                    {currentUser ? (
+                        <Button variant="outline-danger" onClick={onLogout}>
+                            Log Out
+                        </Button>
+                    ) : isLanding && (
                         <>
-                            <Nav.Link as="button" className="btn btn-link" onClick={onSignupClick}>
-                                Sign Up
-                            </Nav.Link>
-                            <Nav.Link as="button" className="btn btn-link" onClick={onLoginClick}>
+                            <Button variant="outline-success" className="me-2" onClick={onLoginClick}>
                                 Log In
-                            </Nav.Link>
+                            </Button>
+                            <Button variant="primary" onClick={onSignupClick}>
+                                Sign Up
+                            </Button>
                         </>
                     )}
                 </Nav>
